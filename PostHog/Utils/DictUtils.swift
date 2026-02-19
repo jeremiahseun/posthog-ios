@@ -8,6 +8,8 @@
 import CoreGraphics
 import Foundation
 
+private let iso8601Formatter = ISO8601DateFormatter()
+
 func toJSONData(_ dict: [String: Any]?, options: JSONSerialization.WritingOptions = []) -> Data? {
     guard let sanitized = sanitizeDictionary(dict) else {
         return nil
@@ -43,7 +45,7 @@ public func sanitizeDictionary(_ dict: [String: Any]?) -> [String: Any]? {
             continue
         }
         if value is Date {
-            newDict[key] = ISO8601DateFormatter().string(from: (value as! Date))
+            newDict[key] = iso8601Formatter.string(from: (value as! Date))
             continue
         }
 
