@@ -59,7 +59,7 @@ class PostHogFileBackedQueue {
     func add(_ contents: Data) {
         do {
             let filename = "\(Date().timeIntervalSince1970)"
-            try contents.write(to: queue.appendingPathComponent(filename))
+            try contents.write(to: queue.appendingPathComponent(filename), options: .completeFileProtectionUntilFirstUserAuthentication)
             items.append(filename)
         } catch {
             hedgeLog("Could not write file \(error)")
