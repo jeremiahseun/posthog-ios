@@ -2,7 +2,7 @@
 //  PostHogDeepLinkModifier.swift
 //  PostHog
 //
-//  Created by PostHog on 27.02.25.
+//  Created by Jeremiah Erinola on 21.02.26.
 //
 
 import Foundation
