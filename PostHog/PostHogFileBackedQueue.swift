@@ -59,7 +59,11 @@ class PostHogFileBackedQueue {
     func add(_ contents: Data) {
         do {
             let filename = "\(Date().timeIntervalSince1970)"
-            try contents.write(to: queue.appendingPathComponent(filename))
+            var options: Data.WritingOptions = .atomic
+#if !os(macOS)
+            options.insert(.completeFileProtection)
+#endif
+            try contents.write(to: queue.appendingPathComponent(filename), options: options)
             items.append(filename)
         } catch {
             hedgeLog("Could not write file \(error)")

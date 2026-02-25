@@ -154,6 +154,13 @@ class PostHogFileBackedQueueTest: QuickSpec {
             expect(sut.depth) == 1
             expect(items.count) == 1
 
+            // Verify content was written correctly
+            if let fileName = items.first {
+                let fileURL = newURL.appendingPathComponent(fileName)
+                let readData = try Data(contentsOf: fileURL)
+                expect(readData) == eventsData
+            }
+
             sut.clear()
         }
 
