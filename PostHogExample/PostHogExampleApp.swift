@@ -14,7 +14,7 @@ struct PostHogExampleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .postHogScreenView().postHogDeepLinkHandler() // will infer the class name (ContentView)
+                .postHogScreenView() // will infer the class name (ContentView)
         }
     }
 }
