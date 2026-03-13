@@ -289,7 +289,7 @@ class PostHogStorage {
                 return
             }
 
-            try contents?.write(to: url)
+            try contents?.write(to: url, options: .completeFileProtectionUntilFirstUserAuthentication)
 
             var resourceValues = URLResourceValues()
             resourceValues.isExcludedFromBackup = true
